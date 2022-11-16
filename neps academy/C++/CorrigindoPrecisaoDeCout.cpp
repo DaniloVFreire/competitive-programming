@@ -7,7 +7,7 @@ int main()
   cout << valor << endl;
 
   cout.precision(2);
-  //cout.setf(ios::fixed);
+  cout.setf(ios::fixed);
   cout << valor << endl;
   return 0;
 }
