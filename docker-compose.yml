@@ -1,0 +1,7 @@
+services:
+  dev-env:
+    build: .
+    container_name: competitive-programming
+    volumes:
+      - .:/competitive-programming
+    tty: true
