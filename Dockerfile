@@ -1,21 +1,51 @@
-From ubuntu:24.04
+# Use the official Alpine Linux base image
+FROM alpine:latest
 
-RUN apt-get update -q && DEBIAN_FRONTEND=noninteractive apt-get -y install locales
+# Install necessary packages and dependencies
+RUN apk update && \
+    apk add --no-cache \
+        gcc \
+        g++ \
+        python3 \
+        python3-dev \
+        git \
+        tmux \
+        curl \
+        make \
+        py3-pip \
+        go \
+        unzip \
+        ripgrep \
+        fd \
+        tree-sitter \
+        nodejs \
+        neovim \
+        neovim-doc \
+        bash \
+        ncurses
 
-RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
-    locale-gen
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+# Set Python 3 as the default Python interpreter
+RUN ln -sf /usr/bin/python3 /usr/bin/python && \
+    ln -sf /usr/bin/pip3 /usr/bin/pip
 
-RUN apt-get update -q && \
-    apt-get -y install gcc g++ python3 git tmux curl make python3-pip golang-go unzip ripgrep fd-find && \
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && \
-    echo 'source $HOME/.cargo/env' >> ~/.bashrc && \
-    curl -L https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz -o nvim-linux64.tar.gz && \
-    tar xzvf nvim-linux64.tar.gz && \
-    mv nvim-linux64 /usr/local/ && \
-    echo 'export PATH="/usr/local/nvim-linux64/bin:$PATH"' >> ~/.bashrc && \
-    rm -rf ~/.config/nvim && \
-    git clone https://github.com/nvim-lua/kickstart.nvim.git ~/.config/nvim
-WORKDIR competitive-programming
+# Create and activate a virtual environment
+RUN python -m venv /venv
+ENV PATH="/venv/bin:$PATH"
+
+# Upgrade pip within the virtual environment
+RUN pip install --upgrade pip
+
+# Install packages within the virtual environment
+RUN pip install \
+        rg \
+        pynvim
+
+# Install rust
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && \
+    source $HOME/.cargo/env
+
+# Install neovim plugins and configurations
+RUN git clone https://github.com/nvim-lua/kickstart.nvim.git ~/.config/nvim
+
+# Set the working directory
+WORKDIR /competitive-programming
