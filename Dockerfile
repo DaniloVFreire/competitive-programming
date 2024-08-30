@@ -1,4 +1,4 @@
-From ubuntu:24.04
+FROM ubuntu:24.04
 
 RUN apt-get update -q && DEBIAN_FRONTEND=noninteractive apt-get -y install locales
 
