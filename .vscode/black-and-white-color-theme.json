@@ -1,0 +1,35 @@
+{
+  "name": "Black and White Monochrome",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#000000",
+    "editor.foreground": "#FFFFFF",
+    "editorCursor.foreground": "#FFFFFF",
+    "editorLineNumber.foreground": "#555555",
+    "editorLineNumber.activeForeground": "#AAAAAA",
+    "editor.selectionBackground": "#333333",
+    "editor.inactiveSelectionBackground": "#222222",
+    "editorIndentGuide.background": "#222222",
+    "editorIndentGuide.activeBackground": "#444444"
+  },
+  "tokenColors": [
+    {
+      "scope": [
+        "comment",
+        "constant",
+        "entity",
+        "keyword",
+        "storage",
+        "string",
+        "support",
+        "variable",
+        "markup.bold",
+        "markup.italic"
+      ],
+      "settings": {
+        "foreground": "#FFFFFF",
+        "fontStyle": ""
+      }
+    }
+  ]
+}

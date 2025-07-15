@@ -1,12 +1,38 @@
 {
-  "files.associations": {
-    "xiosbase": "cpp",
-    "compare": "cpp",
-    "xstddef": "cpp",
-    "xutility": "cpp",
-    "initializer_list": "cpp",
-    "vector": "cpp",
-    "xstring": "cpp",
-    "ostream": "cpp"
+  "workbench.colorTheme": "Monochrome Light Amplified",
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          "*",
+          "punctuation",
+          "punctuation.*",
+          "keyword",
+          "keyword.*",
+          "storage",
+          "storage.*",
+          "constant",
+          "constant.*",
+          "entity",
+          "entity.*",
+          "variable",
+          "variable.*",
+          "support",
+          "support.*",
+          "string",
+          "string.*",
+          "comment",
+          "comment.*",
+          "markup",
+          "markup.*",
+          "meta",
+          "meta.*"
+        ],
+        "settings": {
+          "foreground": "#000000",
+          "fontStyle": ""
+        }
+      }
+    ]
   }
 }
